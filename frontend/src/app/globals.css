@@ -4,3 +4,26 @@ body {
   margin: 0;
   padding: 0;
 }
+.navbar-dark .navbar-nav .nav-link {
+  color: rgb(181, 170, 170);
+  transition: color 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: rgb(230,119,71); /* orange hover */
+}
+
+.navbar-brand span {
+  font-size: 1.25rem;
+}
+
+.footer-link {
+  color: rgb(181, 170, 170); /* gray text */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: rgb(230, 119, 71); /* orange on hover */
+}
+
