@@ -1,5 +1,16 @@
 {
+  "name": "studybean",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd Server && npm start",
+    "client": "cd Client && npm run dev"
+  },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.5"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }

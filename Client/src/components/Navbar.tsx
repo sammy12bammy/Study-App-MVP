@@ -2,15 +2,29 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/utils/supabaseClient';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Navbar() {
+  const router = useRouter();
+
+  const handleCreateSet = async () => {
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (session) {
+      router.push('/sets');
+    } else {
+      router.push('/login');
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#000' }}>
       <div className="container-fluid">
         <Link className="navbar-brand" href="/">
           <img
-            src="/logo-placeholder.png" // placeholder for your future logo
+            src="/logo-placeholder.png"
             alt="StudyBean Logo"
             width="40"
             height="40"
@@ -25,8 +39,8 @@ export default function Navbar() {
 
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link" href="/create-set">Create Set</Link>
+          <li className="nav-item">
+              <Link className="nav-link" href="/create-cards">Create Set</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" href="/create-cards">Create Cards</Link>
