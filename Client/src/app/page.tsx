@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 //import navbar and Footer from the components
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Link from 'next/link';
 
 
 export default function Home() {
@@ -38,9 +39,9 @@ export default function Home() {
             <button className="btn btn-primary px-4 py-2" style={{ backgroundColor: 'rgb(230,119,71)', border: 'none' }}>
               Start Studying
             </button>
-            <button className="btn btn-outline-light px-4 py-2">
+            <Link href="/signup" className="btn btn-outline-light px-4 py-2">
               Sign Up
-            </button>
+            </Link>
           </div>
         </section>
 

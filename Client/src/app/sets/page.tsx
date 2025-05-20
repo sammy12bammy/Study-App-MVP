@@ -31,7 +31,7 @@ export default function SetsPage() {
       }
 
       try {
-        const response = await fetch('http://localhost:5000/api/study-sets', {
+        const response = await fetch('http://localhost:5001/api/study-sets', {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${session.access_token}`,
