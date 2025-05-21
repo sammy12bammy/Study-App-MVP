@@ -34,6 +34,24 @@ cd root
 npm install --save-dev concurrently
 ```
 
+## .env and api
+- The project requires 2 seperate enviroment files
+- Make a .env.local in the client
+```bash
+cd Client
+touch .env.local
+NEXT_PUBLIC_SUPABASE_URL=""
+NEXT_PUBLIC_SUPABASE_ANON_KEY=""
+```
+- Make a .env in the Server
+```bash
+cd Server
+touch .env
+SUPABASE_URL=""
+SUPABASE_SERVICE_ROLE_KEY=""
+```
+- Reach out to me for the keys and URL
+
 ### Running the app
 - run:
 ```bash
