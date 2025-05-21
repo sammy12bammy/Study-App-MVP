@@ -1,6 +1,6 @@
 # Study-App-MVP
 
-## 📦 Dependencies
+## Dependencies
 
 ### Server (Express + Supabase)
 - express
