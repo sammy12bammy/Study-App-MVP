@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 
 export default function CreateSetPage() {
   const router = useRouter();
+  const [mode, setMode] = useState<'manual' | 'pdf' | null>(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [error, setError] = useState('');
@@ -44,29 +45,70 @@ export default function CreateSetPage() {
 
       <main className="flex-grow-1 container py-5">
         <h2 className="mb-4">Create a New Study Set</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label className="form-label">Title</label>
-            <input
-              type="text"
-              className="form-control"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
+
+        {mode === null && (
+          <div className="d-flex gap-3 flex-wrap justify-content-center">
+            <button
+              className="btn btn-outline-primary px-4 py-2"
+              onClick={() => setMode('manual')}
+            >
+              Create Set Manually
+            </button>
+
+            <button
+              className="btn btn-outline-light px-4 py-2"
+              onClick={() => setMode('pdf')}
+            >
+              Upload a PDF (Coming Soon)
+            </button>
           </div>
-          <div className="mb-3">
-            <label className="form-label">Description</label>
-            <textarea
-              className="form-control"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              rows={3}
-            />
+        )}
+
+        {mode === 'manual' && (
+          <form onSubmit={handleSubmit} className="mt-4">
+            <div className="mb-3">
+              <label className="form-label">Title</label>
+              <input
+                type="text"
+                className="form-control"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label className="form-label">Description</label>
+              <textarea
+                className="form-control"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                rows={3}
+              />
+            </div>
+            {error && <p className="text-danger">{error}</p>}
+            <div className="d-flex justify-content-between">
+              <button type="submit" className="btn btn-primary">
+                Create
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => setMode(null)}
+              >
+                Back
+              </button>
+            </div>
+          </form>
+        )}
+
+        {mode === 'pdf' && (
+          <div className="mt-4 text-center">
+            <p>📄 PDF upload functionality coming soon!</p>
+            <button className="btn btn-secondary" onClick={() => setMode(null)}>
+              Back
+            </button>
           </div>
-          {error && <p className="text-danger">{error}</p>}
-          <button type="submit" className="btn btn-primary">Create</button>
-        </form>
+        )}
       </main>
 
       <Footer />

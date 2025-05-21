@@ -40,7 +40,7 @@ export default function Navbar() {
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul className="navbar-nav">
           <li className="nav-item">
-              <Link className="nav-link" href="/sets">Create Set</Link>
+              <Link className="nav-link" href="/sets">My Sets</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" href="/create-cards">Create Cards</Link>
