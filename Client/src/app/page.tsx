@@ -2,7 +2,11 @@
 
 
 //main landing page!!
-
+/** This is the main landing/ home page. Although not fully impemented, this page should contain info
+ * about StudyBean, as well as have users sign up/ login.
+ * 
+ * @returns : HTML Skeletion
+ */
 
 import { useEffect, useState } from 'react';
 //import navbar and Footer from the components
@@ -10,11 +14,15 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Link from 'next/link';
 
-
+/*
+  The function home has no effect on the actual website. All it does is makes a request to the Server. This server
+  actually handles writting to the supabase databse. Home test that the backend works and throws a error if it doesn't
+  Will probably get rid of in production
+*/
 export default function Home() {
   const [message, setMessage] = useState('');
-  //backend stuff has no effect yet
   useEffect(() => {
+    //call to the Server which is hosted on the port below
     fetch('http://localhost:5001/api/message')
       .then(res => res.json())
       .then(data => setMessage(data.message))

@@ -1,3 +1,13 @@
+/**
+ * This is the page for creating a study set. The user is first verified through supabase. A call to the server is made because
+ * modifying the database is handled on the backend. The actual page has 3 different 'modes' (states). A mode null that handles when 
+ * the user first arrives at the page, a mode 'manuel' when a user wants to manually enter and make cards, and a mode 'pdf' when the 
+ * user wants to upload a pdf of their notes and have a future LLM parse and make notes based on the pdf provided. The pdf version
+ * is currently not available
+ * 
+ * @returns : 
+ */
+
 'use client';
 
 import { useState } from 'react';
@@ -16,21 +26,25 @@ export default function CreateSetPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    //ensures you are logged in via supabase
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) {
       router.push('/login');
       return;
     }
-
+    //call the server (locally hosted right now, will migrate to render)
     const res = await fetch('http://localhost:5001/api/study-sets', {
       method: 'POST',
       headers: {
+        //authenication with session
         'Content-Type': 'application/json',
         Authorization: `Bearer ${session.access_token}`,
       },
+      //JSON file for easier processing
       body: JSON.stringify({ title, description }),
     });
 
+    //redirect user to sets if verified 
     if (res.ok) {
       router.push('/sets');
     } else {

@@ -1,3 +1,10 @@
+/**
+ * This is where the signup happens. Makes a direct call to supabase and supabase does most of the heavy lifting.
+ * Navbar and Footer imported from components
+ * 
+ * @returns : HTML Skeleton
+ */
+
 'use client';
 
 import { useState } from 'react';
@@ -6,6 +13,11 @@ import { supabase } from '@/utils/supabaseClient';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
+/*
+  variables declared with react states as imported above. A react event is created that gets 
+  data from supabase. Error is checked with this event and if there is no error, the user is
+  directed to the sets page
+*/
 export default function SignupPage() {
   const router = useRouter();
   const [email, setEmail] = useState('');

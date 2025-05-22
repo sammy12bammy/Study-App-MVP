@@ -1,3 +1,5 @@
+// see signup for detail on how it works, pretty much same thing
+
 'use client';
 
 import { useState } from 'react';

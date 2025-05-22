@@ -1,3 +1,10 @@
+/**
+ * This is a universal footer used by all the pages. Simple links to point to various information.
+ * Not need for authenication
+ * 
+ * @returns HTML skeletion
+ */
+
 export default function Footer() {
     return (
       <footer className="text-white" style={{ backgroundColor: '#000' }}>

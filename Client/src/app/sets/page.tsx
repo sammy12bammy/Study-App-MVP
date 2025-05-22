@@ -1,3 +1,11 @@
+/**
+ * This page displays all the "studysets" that a logged in user has. Obviously uses supabase to handle authenication 
+ * with the public key provided in the enviroment file (session). Once authenication has been established, the Server API
+ * is called which handles the 'get' part.
+ * 
+ * @return : 
+ */
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -14,6 +22,9 @@ interface StudySet {
   created_at: string;
 }
 
+/*
+
+*/
 export default function SetsPage() {
   const router = useRouter();
   const [sets, setSets] = useState<StudySet[]>([]);
@@ -31,6 +42,7 @@ export default function SetsPage() {
       }
 
       try {
+        //call to my server, right now local host- will be replace with render
         const response = await fetch('http://localhost:5001/api/study-sets', {
           method: 'GET',
           headers: {
@@ -44,6 +56,7 @@ export default function SetsPage() {
         }
 
         const data = await response.json();
+        //this is where the actual sets are stored
         setSets(data);
       } catch (error) {
         console.error('Failed to fetch sets:', error);
