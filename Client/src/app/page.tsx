@@ -20,14 +20,6 @@ import Link from 'next/link';
   Will probably get rid of in production
 */
 export default function Home() {
-  const [message, setMessage] = useState('');
-  useEffect(() => {
-    //call to the Server which is hosted on the port below
-    fetch('http://localhost:5001/api/message')
-      .then(res => res.json())
-      .then(data => setMessage(data.message))
-      .catch(err => console.error('API error:', err));
-  }, []);
 
   return (  
     <div className="d-flex flex-column min-vh-100" style={{ backgroundColor: '#121212' }}>
