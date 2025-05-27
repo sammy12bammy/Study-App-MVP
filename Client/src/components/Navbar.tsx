@@ -12,7 +12,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/utils/supabaseClient';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Navbar() {
@@ -20,15 +19,6 @@ export default function Navbar() {
 
   //This is where the authencation from Supabase happens, speciffically for trying to access a set. A if/else statement lets the router
   //know if the user is login and if not, the user is redirect to the login page
-  const handleCreateSet = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-
-    if (session) {
-      router.push('/sets');
-    } else {
-      router.push('/login');
-    }
-  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: '#000' }}>
@@ -57,7 +47,7 @@ export default function Navbar() {
               <Link className="nav-link" href="/create-cards">Create Cards</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/quick-study">Quick Study</Link>
+              <Link className="nav-link" href="/test">Practice Set</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" href="/login">Login</Link>

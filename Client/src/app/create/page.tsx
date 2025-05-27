@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 
 type Flashcard = { term: string; definition: string };
 
-export default function CreateSetPage() {
+export default function CreateSetPage(){
   const router = useRouter();
   const [mode, setMode] = useState<'manual' | 'pdf' | null>(null);
   const [title, setTitle] = useState('');
@@ -18,6 +18,7 @@ export default function CreateSetPage() {
   ]);
   const [error, setError] = useState('');
 
+  //3 modes for manipulating flashcards
   const addFlashcard = () =>
     setFlashcards([...flashcards, { term: '', definition: '' }]);
   const removeFlashcard = (i: number) =>
@@ -36,14 +37,14 @@ export default function CreateSetPage() {
     const {
       data: { session },
     } = await supabase.auth.getSession();
-    if (!session) {
+    if(!session) {
       router.push('/login');
       return;
     }
     console.log('user is logged in');
 
     // 2) validation
-    if (!title.trim() || flashcards.some((f) => !f.term.trim())) {
+    if(!title.trim() || flashcards.some((f) => !f.term.trim())) {
       setError('Please provide a title and at least one term.');
       return;
     }
