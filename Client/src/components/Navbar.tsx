@@ -47,7 +47,7 @@ export default function Navbar() {
               <Link className="nav-link" href="/create-cards">Create Cards</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/test">Practice Set</Link>
+              <Link className="nav-link" href="/test">Practice Test</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" href="/login">Login</Link>

@@ -74,7 +74,7 @@ export default function CreateTestPage() {
   // generated quiz questions
   const [questions, setQuestions] = useState<Question[]>([]);
   // user's answers keyed by question index
-  const [answers, setAnswers] = useState<{ [idx: number]: string }>({});
+  const [answers, setAnswers] = useState<{[idx: number]: string}>({});
   // whether to show results instead of the quiz form
   const [showResults, setShowResults] = useState(false);
 
@@ -109,10 +109,11 @@ export default function CreateTestPage() {
     setError('');
     const setObj = sets.find(s => s.id === selectedSetId);
     if (!setObj) {
+      
       setError('Please select a valid study set.');
       return;
     }
-
+    console.log("got past first if, going to the try statement");
     try {
       // pick up to 20 random flashcards
       const pool = shuffle(setObj.terms);
@@ -189,7 +190,7 @@ export default function CreateTestPage() {
         {error && <p className="text-danger">{error}</p>}
 
         {/* Step 1: select which set to test on */}
-        {!selectedSetId && (
+        {questions.length === 0 && (
           <div className="mb-4">
             <label className="form-label">Pick a Study Set:</label>
             <select
@@ -206,6 +207,7 @@ export default function CreateTestPage() {
                 </option>
               ))}
             </select>
+            {/** this is where shit breaks */}
             <button
               className="btn btn-primary mt-3"
               onClick={generateQuestions}
